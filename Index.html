@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NEXORA | Everything You Need</title>
+
+<meta name="description"
+content="Discover electronics, gaming accessories, fashion, fragrances and more at NEXORA.">
+
+<style>
+:root {
+  --dark: #101820;
+  --accent: #ffb800;
+  --light: #f5f6f8;
+  --white: #ffffff;
+  --muted: #687386;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--light);
+  color: var(--dark);
+}
+
+button, input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.topbar {
+  background: var(--dark);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+header {
+  background: white;
+  padding: 18px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.logo span {
+  color: #d99b00;
+}
+
+.search {
+  flex: 1;
+  max-width: 500px;
+  display: flex;
+  background: #f1f2f5;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.search input {
+  width: 100%;
+  min-width: 0;
+  padding: 13px;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.search button {
+  border: none;
+  background: var(--accent);
+  padding: 0 17px;
+  font-weight: bold;
+}
+
+.cart-button {
+  background: var(--dark);
+  color: white;
+  border: none;
+  border-radius: 7px;
+  padding: 12px 15px;
+}
+
+.hero {
+  margin: 25px auto;
+  width: 90%;
+  max-width: 1400px;
+  min-height: 360px;
+  border-radius: 18px;
+  padding: 55px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: white;
+  background:
+    radial-gradient(circle at 80% 40%, #4a4b4d 0, transparent 32%),
+    linear-gradient(120deg, #101820, #252d36);
+}
+
+.hero-content {
+  max-width: 550px;
+}
+
+.hero .eyebrow {
+  color: var(--accent);
+  font-weight: bold;
+  letter-spacing: 3px;
+  font-size: 12px;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 6vw, 68px);
+  line-height: 1.05;
+  margin: 20px 0;
+}
+
+.hero p {
+  color: #d2d6dc;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.primary-button {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--dark);
+  border: none;
+  border-radius: 6px;
+  padding: 15px 24px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+section {
+  width: 90%;
+  max-width: 1400px;
+  margin: 45px auto;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.section-heading h2 {
+  font-size: 26px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 7px;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.category {
+  background: white;
+  border: 1px solid #e9ebef;
+  border-radius: 12px;
+  padding: 22px 10px;
+  text-align: center;
+  transition: .2s;
+  cursor: pointer;
+}
+
+.category:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.category-icon {
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+
+.category h3 {
+  font-size: 14px;
+}
+
+.category p {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 6px;
+}
+
+.filters {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.filter {
+  border: 1px solid #dddfe5;
+  border-radius: 25px;
+  padding: 9px 15px;
+  background: white;
+  color: var(--dark);
+}
+
+.filter.active,
+.filter:hover {
+  background: var(--dark);
+  color: white;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.product {
+  background: white;
+  border: 1px solid #e9ebef;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: .2s;
+}
+
+.product:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px #17212b10;
+}
+
+.product-image {
+  position: relative;
+  background: #f0f1f3;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--accent);
+  padding: 6px 9px;
+  font-size: 10px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.product-info {
+  padding: 16px;
+}
+
+.product-category {
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.product h3 {
+  font-size: 15px;
+  margin: 9px 0;
+}
+
+.product-description {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+  min-height: 36px;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 19px;
+  margin: 14px 0;
+}
+
+.add-button {
+  width: 100%;
+  background: var(--dark);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.add-button:hover {
+  background: #303d4a;
+}
+
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.benefit {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #e9ebef;
+}
+
+.benefit h3 {
+  margin: 12px 0;
+}
+
+.benefit p {
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 13px;
+}
+
+.newsletter {
+  background: #e9edf2;
+  border-radius: 15px;
+  padding: 40px 25px;
+  text-align: center;
+}
+
+.newsletter p {
+  color: var(--muted);
+  margin: 12px 0 22px;
+}
+
+.newsletter form {
+  display: flex;
+  max-width: 450px;
+  margin: auto;
+  gap: 8px;
+}
+
+.newsletter input {
+  min-width: 0;
+  flex: 1;
+  padding: 13px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+footer {
+  background: var(--dark);
+  color: white;
+  padding: 45px 5% 20px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 30px;
+  max-width: 1300px;
+  margin: auto;
+}
+
+footer p {
+  color: #b8c0ca;
+  font-size: 13px;
+  line-height: 1.8;
+  margin-top: 12px;
+}
+
+footer h3 {
+  margin-bottom: 12px;
+}
+
+footer a {
+  display: block;
+  color: #d4d9e0;
+  text-decoration: none;
+  font-size: 13px;
+  margin: 10px 0;
+}
+
+.copyright {
+  border-top: 1px solid #35404c;
+  margin-top: 30px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.whatsapp {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: #168b52;
+  color: white;
+  border-radius: 30px;
+  padding: 14px 18px;
+  text-decoration: none;
+  box-shadow: 0 5px 18px #0002;
+  z-index: 5;
+}
+
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: #0008;
+  z-index: 10;
+  display: none;
+}
+
+.cart-overlay.open {
+  display: block;
+}
+
+.cart-panel {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: min(420px, 100%);
+  background: white;
+  padding: 25px;
+  overflow-y: auto;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 28px;
+}
+
+.cart-item {
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cart-item button {
+  padding: 5px 9px;
+  margin: 5px 3px 0 0;
+}
+
+.cart-total {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 25px 0;
+}
+
+.checkout-button {
+  width: 100%;
+  padding: 15px;
+  background: var(--accent);
+  border: none;
+  border-radius: 7px;
+  font-weight: bold;
+}
+
+.empty {
+  color: var(--muted);
+  padding: 30px 0;
+}
+
+@media (max-width: 900px) {
+  .products {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .categories {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .hero {
+    padding: 35px;
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 15px 5%;
+    gap: 13px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .search {
+    order: 3;
+    flex-basis: 100%;
+    max-width: none;
+  }
+
+  .hero {
+    min-height: 320px;
+    padding: 28px 22px;
+    width: 92%;
+  }
+
+  section {
+    width: 92%;
+    margin: 35px auto;
+  }
+
+  .products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .product-image {
+    height: 155px;
+  }
+
+  .product-info {
+    padding: 12px;
+  }
+
+  .product h3 {
+    font-size: 13px;
+  }
+
+  .price {
+    font-size: 16px;
+  }
+
+  .categories {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .benefits {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-grid > div:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .newsletter form {
+    flex-direction: column;
+  }
+
+  .section-heading h2 {
+    font-size: 22px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  WELCOME TO NEXORA · YOUR NEXT GREAT FIND STARTS HERE
+</div>
+
+<header>
+  <a href="#" class="logo" style="text-decoration:none;color:inherit">
+    NEX<span>O</span>RA
+  </a>
+
+  <form class="search" id="searchForm">
+    <input id="searchInput" type="search"
+      placeholder="Search products..." aria-label="Search products">
+    <button type="submit">Search</button>
+  </form>
+
+  <button class="cart-button" id="openCart">
+    🛒 Cart (<span id="cartCount">0</span>)
+  </button>
+</header>
+
+<main>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">WELCOME TO NEXORA</div>
+    <h1>Everything You Need. One Destination.</h1>
+    <p>
+      Discover exciting finds across technology, gaming, fashion,
+      lifestyle and more. Your next favourite product starts here.
+    </p>
+    <a href="#products" class="primary-button">Explore Products →</a>
+  </div>
+</div>
+
+<section>
+  <div class="section-heading">
+    <div>
+      <h2>Shop by Category</h2>
+      <p>Explore products for your everyday life.</p>
+    </div>
+  </div>
+
+  <div class="categories" id="categories">
+    <button class="category" data-category="Electronics">
+      <div class="category-icon">📱</div>
+      <h3>Electronics</h3>
+      <p>Tech essentials</p>
+    </button>
+
+    <button class="category" data-category="Gaming">
+      <div class="category-icon">🎮</div>
+      <h3>Gaming</h3>
+      <p>Level up</p>
+    </button>
+
+    <button class="category" data-category="Fashion">
+      <div class="category-icon">👟</div>
+      <h3>Fashion</h3>
+      <p>Everyday style</p>
+    </button>
+
+    <button class="category" data-category="Beauty">
+      <div class="category-icon">✨</div>
+      <h3>Beauty</h3>
+      <p>Self-care picks</p>
+    </button>
+
+    <button class="category" data-category="Home">
+      <div class="category-icon">🏠</div>
+      <h3>Home & Living</h3>
+      <p>Make it yours</p>
+    </button>
+  </div>
+</section>
+
+<section id="products">
+  <div class="section-heading">
+    <div>
+      <h2>Discover Our Products</h2>
+      <p>Explore our starter collection.</p>
+    </div>
+  </div>
+
+  <div class="filters" id="filters">
+    <button class="filter active" data-category="All">All Products</button>
+    <button class="filter" data-category="Electronics">Electronics</button>
+    <button class="filter" data-category="Gaming">Gaming</button>
+    <button class="filter" data-category="Fashion">Fashion</button>
+    <button class="filter" data-category="Beauty">Beauty</button>
+    <button class="filter" data-category="Home">Home</button>
+  </div>
+
+  <div class="products" id="productGrid"></div>
+</section>
+
+<section>
+  <div class="section-heading">
+    <div>
+      <h2>The NEXORA Experience</h2>
+      <p>Shopping designed around your needs.</p>
+    </div>
+  </div>
+
+  <div class="benefits">
+    <div class="benefit">
+      <div style="font-size:30px">🔎</div>
+      <h3>Discover More</h3>
+      <p>Explore a growing collection of products across different categories.</p>
+    </div>
+
+    <div class="benefit">
+      <div style="font-size:30px">🛍️</div>
+      <h3>Shop Smarter</h3>
+      <p>Browse products and compare details before deciding what to buy.</p>
+    </div>
+
+    <div class="benefit">
+      <div style="font-size:30px">🌍</div>
+      <h3>Think Worldwide</h3>
+      <p>Our long-term vision is to make shopping accessible across more markets.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="newsletter">
+    <h2>Stay in the Loop</h2>
+    <p>Be among the first to hear about new products and future offers.</p>
+
+    <form id="newsletterForm">
+      <input type="email" placeholder="Enter your email"
+        aria-label="Email address" required>
+      <button class="primary-button" type="submit">Join Us</button>
+    </form>
+    <p id="newsletterMessage" role="status"></p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="logo">NEX<span>O</span>RA</div>
+      <p>Everything You Need. One Destination.</p>
+      <p>
+        An emerging online shopping brand with a vision to make
+        discovering products easier.
+      </p>
+    </div>
+
+    <div>
+      <h3>Explore</h3>
+      <a href="#products">All Products</a>
+      <a href="#categories">Categories</a>
+      <a href="#products">Featured Products</a>
+    </div>
+
+    <div>
+      <h3>Contact</h3>
+      <a href="https://wa.me/2349139153546"
+         target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+      <a href="mailto:hello@nexora.example">Email Us</a>
+      <p>Replace the example email with your real business email before launch.</p>
+    </div>
+  </div>
+
+  <div class="copyright">
+    <p>© <span id="year"></span> NEXORA. All rights reserved.</p>
+  </div>
+</footer>
+
+<a class="whatsapp"
+   href="https://wa.me/2349139153546"
+   target="_blank" rel="noopener noreferrer">
+   WhatsApp Us
+</a>
+
+<div class="cart-overlay" id="cartOverlay">
+  <div class="cart-panel" role="dialog" aria-modal="true"
+       aria-labelledby="cartTitle">
+    <div class="cart-header">
+      <h2 id="cartTitle">Your Cart</h2>
+      <button class="close-button" id="closeCart"
+        aria-label="Close cart">&times;</button>
+    </div>
+
+    <div id="cartItems"></div>
+    <div class="cart-total" id="cartTotal">Total: ₦0</div>
+
+    <button class="checkout-button" id="checkoutButton">
+      Continue to WhatsApp Order
+    </button>
+
+    <p style="font-size:12px;color:#687386;margin-top:12px;line-height:1.6">
+      Demonstration checkout only. No payment is collected on this website.
+      Confirm prices and availability before accepting an order.
+    </p>
+  </div>
+</div>
+
+<script>
+const products = [
+  {
+    id: 1,
+    name: "Wireless Headphones",
+    category: "Electronics",
+    price: 18000,
+    description: "Everyday audio for music and entertainment.",
+    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80",
+    badge: "FEATURED"
+  },
+  {
+    id: 2,
+    name: "Gaming Controller",
+    category: "Gaming",
+    price: 25000,
+    description: "A controller concept for your gaming setup.",
+    image: "https://images.unsplash.com/photo-1592840496694-26d035b52b48?auto=format&fit=crop&w=600&q=80",
+    badge: "GAMING"
+  },
+  {
+    id: 3,
+    name: "Classic Sneakers",
+    category: "Fashion",
+    price: 22000,
+    description: "Casual footwear for everyday outfits.",
+    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80",
+    badge: "STYLE"
+  },
+  {
+    id: 4,
+    name: "Wristwatch",
+    category: "Fashion",
+    price: 15000,
+    description: "A simple accessory for your collection.",
+    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80",
+    badge: "PICK"
+  },
+  {
+    id: 5,
+    name: "Fragrance Bottle",
+    category: "Beauty",
+    price: 12000,
+    description: "A fragrance product example. Verify authenticity and availability.",
+    image: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=600&q=80",
+    badge: "BEAUTY"
+  },
+  {
+    id: 6,
+    name: "Modern Backpack",
+    category: "Fashion",
+    price: 19000,
+    description: "Carry everyday essentials in one bag.",
+    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80",
+    badge: "ESSENTIAL"
+  },
+  {
+    id: 7,
+    name: "Desk Lamp",
+    category: "Home",
+    price: 10000,
+    description: "A lighting idea for a study or work desk.",
+    image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=600&q=80",
+    badge: "HOME"
+  },
+  {
+    id: 8,
+    name: "Smartphone",
+    category: "Electronics",
+    price: 150000,
+    description: "Example product listing. Confirm the model and specifications before selling.",
+    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80",
+    badge: "TECH"
+  }
+];
+
+// DEMO DATA: These products and prices are examples, not verified offers.
+let cart = [];
+let activeCategory = "All";
+let searchTerm = "";
+
+const productGrid = document.getElementById("productGrid");
+const cartOverlay = document.getElementById("cartOverlay");
+
+const naira = amount => "₦" + amount.toLocaleString("en-NG");
+
+function renderProducts() {
+  const filtered = products.filter(product => {
+    const matchesCategory =
+      activeCategory === "All" || product.category === activeCategory;
+
+    const text =
+      (product.name + " " + product.description + " " + product.category)
+      .toLowerCase();
+
+    return matchesCategory && text.includes(searchTerm.toLowerCase());
+  });
+
+  if (!filtered.length) {
+    productGrid.innerHTML =
+      '<p class="empty">No products found. Try another search.</p>';
+    return;
+  }
+
+  productGrid.innerHTML = filtered.map(product => `
+    <article class="product">
+      <div class="product-image">
+        <img src="${product.image}"
+             alt="${product.name}"
+             loading="lazy"
+             onerror="this.style.display='none'">
+        <span class="badge">${product.badge}</span>
+      </div>
+
+      <div class="product-info">
+        <div class="product-category">${product.category}</div>
+        <h3>${product.name}</h3>
+        <p class="product-description">${product.description}</p>
+        <div class="price">${naira(product.price)}</div>
+
+        <button class="add-button" data-add="${product.id}">
+          Add to Cart +
+        </button>
+      </div>
+    </article>
+  `).join("");
+}
+
+function addToCart(id) {
+  const product = products.find(item => item.id === id);
+  if (!product) return;
+
+  const existing = cart.find(item => item.id === id);
+
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({...product, quantity: 1});
+  }
+
+  renderCart();
+}
+
+function changeQuantity(id, change) {
+  const item = cart.find(product => product.id === id);
+  if (!item) return;
+
+  item.quantity += change;
+
+  if (item.quantity <= 0) {
+    cart = cart.filter(product => product.id !== id);
+  }
+
+  renderCart();
+}
+
+function renderCart() {
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const total = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity, 0
+  );
+
+  document.getElementById("cartCount").textContent = count;
+  document.getElementById("cartTotal").textContent = "Total: " + naira(total);
+
+  const cartItems = document.getElementById("cartItems");
+
+  if (!cart.length) {
+    cartItems.innerHTML = '<p class="empty">Your cart is empty.</p>';
+    return;
+  }
+
+  cartItems.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <div>
+        <strong>${item.name}</strong>
+        <p>${naira(item.price)} each</p>
+        <button data-change="-1" data-id="${item.id}">−</button>
+        <span>${item.quantity}</span>
+        <button data-change="1" data-id="${item.id}">+</button>
+      </div>
+      <strong>${naira(item.price * item.quantity)}</strong>
+    </div>
+  `).join("");
+}
+
+document.getElementById("productGrid").addEventListener("click", event => {
+  const button = event.target.closest("[data-add]");
+  if (button) addToCart(Number(button.dataset.add));
+});
+
+document.getElementById("cartItems").addEventListener("click", event => {
+  const button = event.target.closest("[data-change]");
+  if (button) {
+    changeQuantity(Number(button.dataset.id), Number(button.dataset.change));
+  }
+});
+
+document.getElementById("filters").addEventListener("click", event => {
+  const button = event.target.closest("[data-category]");
+  if (!button) return;
+
+  activeCategory = 
